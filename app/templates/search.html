@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Medical Record Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-column">
+            <form method="POST" action="{{ url_for('search') }}">
+                {{ form.hidden_tag() }}
+                {{ form.fname.label }}<br>
+                {{ form.fname(class="form-control") }}<br>
+
+                {{ form.lname.label }}<br>
+                {{ form.lname(class="form-control") }}<br>
+
+                {{ form.id.label }}<br>
+                {{ form.id(class="form-control") }}<br>
+
+                <button type="submit">Enter</button>
+            </form>
+
+
+        </div>
+        <div class="right-column">
+            <div class="patient-info">
+                <h2> Profile </h2>
+                <table>
+                    <tbody>
+                        {% for key, value in results.items() %}
+                        <tr>
+                            <td>{{key}}</td>
+                            <td>{{value}}</td>
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="patient-forms">
+                <h2>Forms for {{ results['First Name'] }} {{results['Last Name']}}</h2>
+                <ol type="1">
+                    <li><a href="{{ url_for('druglist') }}">Patient Drug List</a></li>
+                    <li><a href="{{ url_for('healthhistory') }}">Patient Health History</a></li>
+                    <li><a href="{{ url_for('socialhistory') }}">Patient Social History</a></li>
+                    <li><a href="{{ url_for('visitforms') }}">Patient Visit Forms</a></li>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="horizontal-section">
+        <form action="{{ url_for('addNewPatient') }}" method="get">
+            <button type="submit">Add New Patient</button>
+        </form>
+    </div>
+</body>
+
+</html>

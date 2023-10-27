@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    height: 75%;
+}
+
+.left-column,
+.right-column,
+.horizontal-section {
+    padding: 20px;
+}
+
+.left-column {
+    background-color: #777;
+    flex: 1;
+}
+
+.right-column {
+    background-color: blue;
+    flex: 3;
+    display: flex;
+}
+
+.horizontal-section {
+    height: 25%;
+    background-color: green;
+}
+
+.patient-forms,
+.patient-info {
+    padding: 10px;
+    flex: 1;
+}
+
+.patient-info {
+    background-color: aquamarine;
+}
+
+.patient-forms {
+    background-color: blueviolet;
+}
